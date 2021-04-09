@@ -1,0 +1,2 @@
+config 用来配置启动长安链
+testdata SDK配置

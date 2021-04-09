@@ -1,0 +1,30 @@
+#
+# Copyright IBM Corp All Rights Reserved
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+networks:
+  basic:
+
+services:
+  chainmaker:
+#    restart: on-failure  #on-failure:5 最多重启5次
+    image: littlegirlpppp/chainmaker:v0.5.0
+    tty: true
+    container_name: chainmaker
+    working_dir: /chainmaker-go
+    command: chainmaker  start
+    volumes:
+      - ./certs/:/chainmaker-go/certs
+      - ./chainconfig/:/chainmaker-go/chainconfig
+      - ./chainmaker.yml:/chainmaker-go/chainmaker.yml
+      - ./log.yml:/chainmaker-go/log.yml
+      - ./data/:/chainmaker-go/data
+    networks:
+      - basic
+    ports:
+      - 11301:11301
+      - 12301:12301
+      - 14321:14321
