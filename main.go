@@ -61,23 +61,21 @@ var (
 )
 
 func main()  {
-
+	//创建SDK客户端
 	client, err := createClientWithCertBytes()
-    if err!=nil{
+	if err!=nil{
 
 	}
+	//获取组织admin用户
 	admin1, err := createAdmin(orgId1)
 	admin2, err := createAdmin(orgId2)
 	admin3, err := createAdmin(orgId3)
 	admin4, err := createAdmin(orgId4)
-
 	contractName   := "counter-go-11"
 	version        := "1.0.0"
 	byteCodePath := "./main1.wasm"
-
 	//创建合约
 	UserContractCounterGoCreate(client, admin1, admin2, admin3, admin4, contractName,version,byteCodePath,true)
-
 	//调用合约
 	params:=make(map[string]string)
 	params["key"]="22222"
